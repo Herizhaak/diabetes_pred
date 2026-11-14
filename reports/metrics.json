@@ -1,0 +1,85 @@
+{
+  "n_rows_after_dedup": 99986,
+  "n_train": 79988,
+  "n_test": 19998,
+  "test_prevalence": 0.085,
+  "results": {
+    "with_labs": {
+      "model": "gradient boosting",
+      "threshold": 0.501,
+      "threshold_rule": "max F1 on out-of-fold predictions",
+      "test": {
+        "pr_auc": 0.881,
+        "roc_auc": 0.978,
+        "precision": 0.984,
+        "recall": 0.682,
+        "f1": 0.806,
+        "flagged_share": 0.059
+      },
+      "test_95ci_bootstrap": {
+        "pr_auc": [
+          0.869,
+          0.893
+        ],
+        "roc_auc": [
+          0.975,
+          0.98
+        ],
+        "precision": [
+          0.976,
+          0.991
+        ],
+        "recall": [
+          0.659,
+          0.703
+        ]
+      },
+      "brier": 0.0229
+    },
+    "no_labs": {
+      "model": "gradient boosting",
+      "threshold": 0.084,
+      "threshold_rule": "max precision with OOF recall >= 0.80",
+      "test": {
+        "pr_auc": 0.304,
+        "roc_auc": 0.832,
+        "precision": 0.208,
+        "recall": 0.808,
+        "f1": 0.331,
+        "flagged_share": 0.33
+      },
+      "test_95ci_bootstrap": {
+        "pr_auc": [
+          0.283,
+          0.326
+        ],
+        "roc_auc": [
+          0.824,
+          0.841
+        ],
+        "precision": [
+          0.198,
+          0.218
+        ],
+        "recall": [
+          0.789,
+          0.825
+        ]
+      },
+      "brier": 0.0671
+    },
+    "clinical_rule": {
+      "test": {
+        "pr_auc": 0.205,
+        "roc_auc": 0.775,
+        "precision": 0.239,
+        "recall": 0.781,
+        "f1": 0.366,
+        "flagged_share": 0.278
+      }
+    }
+  },
+  "versions": {
+    "scikit-learn": "1.9.1"
+  }
+}
