@@ -1,6 +1,0 @@
-group,value,n,prevalence,recall,precision
-gender,Female,11750,0.073,0.789,0.198
-gender,Male,8245,0.102,0.827,0.219
-age band,<40,9017,0.015,0.188,0.1
-age band,60+,5077,0.189,0.95,0.224
-age band,40-59,5904,0.102,0.717,0.191
