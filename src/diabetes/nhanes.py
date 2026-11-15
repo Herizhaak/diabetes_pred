@@ -146,7 +146,7 @@ def main():
     args = parser.parse_args()
     paths = download(verify=not args.no_verify)
     df = build({name: read_xpt(p) for name, p in paths.items()})
-    df.to_csv(DATA_PATH, index=False, float_format="%.8g")
+    df.to_csv(DATA_PATH, index=False, float_format="%.8g", lineterminator="\n")
     print(f"wrote {DATA_PATH} ({len(df)} rows, {df['diabetes'].mean():.3f} with diabetes)")
 
 
