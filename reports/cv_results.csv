@@ -1,10 +1,6 @@
-feature_set,model,pr_auc_mean,pr_auc_std,roc_auc_mean,roc_auc_std
-with_labs,baseline: clinical rule (HbA1c/glucose),0.207,0.002,0.779,0.003
-with_labs,baseline: majority class,0.085,0.0,0.5,0.0
-with_labs,logistic regression (class weights),0.818,0.007,0.963,0.003
-with_labs,logistic regression (SMOTE),0.818,0.007,0.963,0.003
-with_labs,gradient boosting,0.885,0.003,0.979,0.001
-no_labs,baseline: majority class,0.085,0.0,0.5,0.0
-no_labs,logistic regression (class weights),0.314,0.007,0.833,0.007
-no_labs,logistic regression (SMOTE),0.315,0.007,0.833,0.007
-no_labs,gradient boosting,0.317,0.01,0.834,0.006
+model,features,pr_auc_mean,pr_auc_std,roc_auc_mean,roc_auc_std,brier_mean
+baseline: majority class,ada_inputs,0.199,0.0,0.5,0.0,0.1594
+baseline: ADA risk test,ada_inputs,0.457,0.024,0.802,0.014,
+"logistic regression, ADA inputs",ada_inputs,0.516,0.025,0.822,0.014,0.1244
+"logistic regression, all no-lab",no_labs,0.537,0.023,0.836,0.01,0.1209
+"gradient boosting, all no-lab",no_labs,0.519,0.026,0.825,0.011,0.1237

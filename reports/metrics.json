@@ -1,85 +1,396 @@
 {
-  "n_rows_after_dedup": 99986,
-  "n_train": 79988,
-  "n_test": 19998,
-  "test_prevalence": 0.085,
-  "results": {
-    "with_labs": {
-      "model": "gradient boosting",
-      "threshold": 0.501,
-      "threshold_rule": "max F1 on out-of-fold predictions",
-      "test": {
-        "pr_auc": 0.881,
-        "roc_auc": 0.978,
-        "precision": 0.984,
-        "recall": 0.682,
-        "f1": 0.806,
-        "flagged_share": 0.059
+  "data": "NHANES 2017-March 2020 pre-pandemic (CDC/NCHS), adults 20+",
+  "outcome": "diabetes = doctor-diagnosed (DIQ010 = 1) OR HbA1c >= 6.5%",
+  "population": {
+    "n_adults": 8064,
+    "n_cases": 1605,
+    "prevalence_unweighted": 0.199,
+    "prevalence_weighted_95ci": [
+      0.146,
+      0.137,
+      0.154
+    ],
+    "undiagnosed_share_of_cases_unweighted": 0.177,
+    "undiagnosed_share_of_cases_weighted_95ci": [
+      0.164,
+      0.143,
+      0.185
+    ],
+    "fasting_subsample": {
+      "n": 3758,
+      "prevalence_weighted_label": 0.14,
+      "prevalence_weighted_if_fpg_ge_126_added": 0.162
+    }
+  },
+  "split": {
+    "n_train": 6451,
+    "n_test": 1613,
+    "test_cases": 321,
+    "test_prevalence": 0.199
+  },
+  "selected_model": "logistic regression, all no-lab",
+  "matched_sensitivity_target": 0.9,
+  "test": {
+    "ml": {
+      "label": "logistic regression, all no-lab (matched sensitivity)",
+      "threshold": 0.1236,
+      "unweighted": {
+        "roc_auc": 0.831,
+        "pr_auc": 0.514,
+        "sensitivity": 0.897,
+        "specificity": 0.591,
+        "ppv": 0.353,
+        "flagged_share": 0.506
       },
-      "test_95ci_bootstrap": {
-        "pr_auc": [
-          0.869,
-          0.893
-        ],
+      "unweighted_95ci": {
         "roc_auc": [
-          0.975,
-          0.98
+          0.809,
+          0.854
         ],
-        "precision": [
-          0.976,
-          0.991
+        "pr_auc": [
+          0.456,
+          0.568
         ],
-        "recall": [
-          0.659,
-          0.703
+        "sensitivity": [
+          0.864,
+          0.929
+        ],
+        "specificity": [
+          0.565,
+          0.617
+        ],
+        "ppv": [
+          0.321,
+          0.387
+        ],
+        "flagged_share": [
+          0.482,
+          0.529
         ]
       },
-      "brier": 0.0229
-    },
-    "no_labs": {
-      "model": "gradient boosting",
-      "threshold": 0.084,
-      "threshold_rule": "max precision with OOF recall >= 0.80",
-      "test": {
-        "pr_auc": 0.304,
-        "roc_auc": 0.832,
-        "precision": 0.208,
-        "recall": 0.808,
-        "f1": 0.331,
-        "flagged_share": 0.33
+      "weighted": {
+        "roc_auc": 0.84,
+        "pr_auc": 0.46,
+        "sensitivity": 0.8,
+        "specificity": 0.7,
+        "ppv": 0.316,
+        "flagged_share": 0.374
       },
-      "test_95ci_bootstrap": {
-        "pr_auc": [
-          0.283,
-          0.326
-        ],
+      "brier": 0.1246
+    },
+    "lr_ada": {
+      "label": "logistic regression, ADA inputs (matched sensitivity)",
+      "threshold": 0.116,
+      "unweighted": {
+        "roc_auc": 0.818,
+        "pr_auc": 0.484,
+        "sensitivity": 0.919,
+        "specificity": 0.553,
+        "ppv": 0.338,
+        "flagged_share": 0.541
+      },
+      "unweighted_95ci": {
         "roc_auc": [
-          0.824,
-          0.841
+          0.794,
+          0.842
         ],
-        "precision": [
-          0.198,
-          0.218
+        "pr_auc": [
+          0.428,
+          0.542
         ],
-        "recall": [
-          0.789,
-          0.825
+        "sensitivity": [
+          0.889,
+          0.947
+        ],
+        "specificity": [
+          0.526,
+          0.579
+        ],
+        "ppv": [
+          0.307,
+          0.37
+        ],
+        "flagged_share": [
+          0.518,
+          0.565
         ]
       },
-      "brier": 0.0671
+      "weighted": {
+        "roc_auc": 0.827,
+        "pr_auc": 0.439,
+        "sensitivity": 0.91,
+        "specificity": 0.584,
+        "ppv": 0.274,
+        "flagged_share": 0.489
+      },
+      "brier": 0.1275
     },
-    "clinical_rule": {
-      "test": {
-        "pr_auc": 0.205,
-        "roc_auc": 0.775,
-        "precision": 0.239,
-        "recall": 0.781,
-        "f1": 0.366,
-        "flagged_share": 0.278
+    "ada": {
+      "label": "ADA risk test, score >= 5",
+      "threshold": 5,
+      "unweighted": {
+        "roc_auc": 0.791,
+        "pr_auc": 0.414,
+        "sensitivity": 0.919,
+        "specificity": 0.498,
+        "ppv": 0.313,
+        "flagged_share": 0.585
+      },
+      "unweighted_95ci": {
+        "roc_auc": [
+          0.766,
+          0.818
+        ],
+        "pr_auc": [
+          0.368,
+          0.463
+        ],
+        "sensitivity": [
+          0.887,
+          0.949
+        ],
+        "specificity": [
+          0.472,
+          0.524
+        ],
+        "ppv": [
+          0.285,
+          0.343
+        ],
+        "flagged_share": [
+          0.562,
+          0.609
+        ]
+      },
+      "weighted": {
+        "roc_auc": 0.797,
+        "pr_auc": 0.355,
+        "sensitivity": 0.913,
+        "specificity": 0.543,
+        "ppv": 0.257,
+        "flagged_share": 0.525
+      }
+    },
+    "bang2009_original": {
+      "label": "Bang 2009 original scoring (active = -1, no GDM item), score >= 5",
+      "unweighted": {
+        "roc_auc": 0.785,
+        "pr_auc": 0.403,
+        "sensitivity": 0.766,
+        "specificity": 0.684,
+        "ppv": 0.376,
+        "flagged_share": 0.405
       }
     }
   },
+  "test_differences_95ci": {
+    "ml minus ada": {
+      "roc_auc": [
+        0.025,
+        0.055
+      ],
+      "pr_auc": [
+        0.065,
+        0.134
+      ],
+      "sensitivity": [
+        -0.054,
+        0.01
+      ],
+      "specificity": [
+        0.073,
+        0.113
+      ],
+      "ppv": [
+        0.026,
+        0.053
+      ],
+      "flagged_share": [
+        -0.096,
+        -0.061
+      ]
+    },
+    "lr_ada minus ada": {
+      "roc_auc": [
+        0.013,
+        0.041
+      ],
+      "pr_auc": [
+        0.04,
+        0.104
+      ],
+      "sensitivity": [
+        -0.026,
+        0.026
+      ],
+      "specificity": [
+        0.036,
+        0.073
+      ],
+      "ppv": [
+        0.014,
+        0.036
+      ],
+      "flagged_share": [
+        -0.06,
+        -0.028
+      ]
+    }
+  },
+  "undiagnosed_screening_oof": {
+    "n": 6743,
+    "n_cases": 284,
+    "prevalence": 0.042,
+    "ml": {
+      "roc_auc": 0.785,
+      "pr_auc": 0.116,
+      "sensitivity": 0.852,
+      "specificity": 0.576,
+      "ppv": 0.081,
+      "flagged_share": 0.442
+    },
+    "ml_95ci": {
+      "roc_auc": [
+        0.763,
+        0.805
+      ],
+      "pr_auc": [
+        0.096,
+        0.144
+      ],
+      "sensitivity": [
+        0.812,
+        0.891
+      ],
+      "specificity": [
+        0.564,
+        0.589
+      ],
+      "ppv": [
+        0.071,
+        0.091
+      ],
+      "flagged_share": [
+        0.429,
+        0.453
+      ]
+    },
+    "ada_score_ge_5": {
+      "roc_auc": 0.737,
+      "pr_auc": 0.086,
+      "sensitivity": 0.852,
+      "specificity": 0.515,
+      "ppv": 0.072,
+      "flagged_share": 0.501
+    },
+    "ada_95ci": {
+      "roc_auc": [
+        0.713,
+        0.763
+      ],
+      "pr_auc": [
+        0.074,
+        0.101
+      ],
+      "sensitivity": [
+        0.807,
+        0.895
+      ],
+      "specificity": [
+        0.503,
+        0.527
+      ],
+      "ppv": [
+        0.063,
+        0.08
+      ],
+      "flagged_share": [
+        0.489,
+        0.511
+      ]
+    },
+    "difference_95ci": {
+      "roc_auc": [
+        0.027,
+        0.067
+      ],
+      "pr_auc": [
+        0.016,
+        0.051
+      ],
+      "sensitivity": [
+        -0.046,
+        0.05
+      ],
+      "specificity": [
+        0.049,
+        0.072
+      ],
+      "ppv": [
+        0.005,
+        0.014
+      ],
+      "flagged_share": [
+        -0.069,
+        -0.047
+      ]
+    },
+    "note": "Out-of-fold predictions (5-fold CV). The ML operating point is read off its OOF ROC curve at the ADA test's sensitivity.",
+    "population": "adults without a diagnosis; outcome = HbA1c >= 6.5% (undiagnosed diabetes)"
+  },
+  "fasting_glucose_reference": {
+    "n": 3955,
+    "n_cases": 783,
+    "no_labs": {
+      "roc_auc": 0.832,
+      "pr_auc": 0.521
+    },
+    "no_labs_plus_fasting_glucose": {
+      "roc_auc": 0.936,
+      "pr_auc": 0.845
+    },
+    "95ci": {
+      "no_labs_plus_fasting_glucose": {
+        "roc_auc": [
+          0.925,
+          0.945
+        ],
+        "pr_auc": [
+          0.824,
+          0.864
+        ]
+      },
+      "no_labs": {
+        "roc_auc": [
+          0.818,
+          0.846
+        ],
+        "pr_auc": [
+          0.484,
+          0.559
+        ]
+      }
+    },
+    "difference_95ci": {
+      "no_labs_plus_fasting_glucose minus no_labs": {
+        "roc_auc": [
+          0.09,
+          0.117
+        ],
+        "pr_auc": [
+          0.289,
+          0.355
+        ]
+      }
+    },
+    "note": "Logistic regression, 5-fold out-of-fold predictions on the fasting subsample. HbA1c is never used as a feature because it defines the label."
+  },
+  "notes": {
+    "weights": "'unweighted' = sample estimates; 'weighted' uses MEC exam weights (point estimates only). Bootstrap CIs resample respondents and ignore the clustered design, so they are somewhat too narrow.",
+    "ada_auc": "ADA ROC/PR-AUC use the 0-11 points total as the score."
+  },
   "versions": {
-    "scikit-learn": "1.9.1"
+    "scikit-learn": "1.9.1",
+    "pandas": "3.1.1"
   }
 }

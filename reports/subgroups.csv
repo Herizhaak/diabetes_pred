@@ -1,0 +1,12 @@
+group,value,n,n_cases,prevalence,ml_roc_auc,ml_sensitivity,ml_specificity,ada_roc_auc,ada_sensitivity,ada_specificity
+age band,20-39,489,19,0.039,0.821,0.526,0.93,0.702,0.263,0.885
+age band,40-59,504,113,0.224,0.802,0.823,0.57,0.752,0.903,0.445
+age band,60+,620,189,0.305,0.747,0.979,0.241,0.693,0.995,0.125
+sex,Female,793,137,0.173,0.847,0.92,0.614,0.804,0.891,0.55
+sex,Male,820,184,0.224,0.817,0.88,0.568,0.774,0.94,0.445
+race/ethnicity,Mexican American,184,43,0.234,0.855,0.93,0.553,0.85,0.93,0.567
+race/ethnicity,Non-Hispanic Asian,179,38,0.212,0.814,0.868,0.603,0.79,0.763,0.695
+race/ethnicity,Non-Hispanic Black,437,90,0.206,0.845,0.933,0.562,0.788,0.944,0.476
+race/ethnicity,Non-Hispanic White,563,101,0.179,0.79,0.822,0.606,0.762,0.931,0.418
+race/ethnicity,Other Hispanic,162,27,0.167,0.894,1.0,0.63,0.872,0.963,0.533
+race/ethnicity,Other/Multiracial,88,22,0.25,0.861,0.955,0.621,0.845,0.955,0.545
